@@ -5,7 +5,7 @@ import { PromoBoost } from "../components/promo-boost"
 import { useState } from "react"
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("home")
+  const [activeTab] = useState("home")
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-background pb-16">
