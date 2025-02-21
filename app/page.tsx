@@ -2,11 +2,8 @@
 
 import { BottomNav } from "../components/ui/bottom-nav"
 import { PromoBoost } from "../components/promo-boost"
-import { useState } from "react"
 
 export default function Home() {
-  const [activeTab] = useState("home")
-
   return (
     <main className="flex min-h-screen flex-col items-center bg-background pb-16">
       {/* Main Content */}
@@ -29,7 +26,7 @@ export default function Home() {
       </div>
 
       {/* Bottom Navigation */}
-      <BottomNav activeTab={activeTab} />
+      <BottomNav />
     </main>
   )
 }
