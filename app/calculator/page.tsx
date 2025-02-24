@@ -18,7 +18,7 @@ function CalculatorContent() {
 
 export default function CalculatorPage() {
   return (
-    <main className="min-h-screen p-4 max-w-xl mx-auto">
+    <main className="min-h-screen p-4 sm:p-6 max-w-xl mx-auto">
       <Suspense fallback={<div>Loading...</div>}>
         <CalculatorContent />
       </Suspense>

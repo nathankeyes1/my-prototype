@@ -43,7 +43,7 @@ export function PromoBoost() {
   }
 
   return (
-    <Card className="p-4">
+    <Card className="p-3 sm:p-4">
       <motion.div
         layout
         className="space-y-4"
@@ -116,13 +116,13 @@ export function PromoBoost() {
               }}
               className="overflow-hidden"
             >
-              <div className="grid grid-cols-4 gap-2 py-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 py-2">
                 {AMOUNT_OPTIONS.map((amount) => (
                   <Button
                     key={amount}
                     variant={selectedAmount === amount ? "default" : "outline"}
                     onClick={() => handleAmountSelect(amount)}
-                    className="w-full rounded-lg border-2"
+                    className="w-full text-sm sm:text-base"
                   >
                     ${amount}
                   </Button>
@@ -165,13 +165,13 @@ export function PromoBoost() {
           <div className="text-sm text-muted-foreground line-through">
             Receive = {regularAmount.toFixed(2)} MXN
           </div>
-          <div className="flex items-center gap-2">
-            <div className="text-xl font-semibold">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <div className="text-lg sm:text-xl font-semibold">
               Receive = {boostedAmount.toFixed(2)} MXN
             </div>
-            <div className="flex items-center gap-1 bg-emerald-900/10 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400 px-2 py-0.5 rounded-md text-xs">
+            <div className="flex items-center gap-1 bg-emerald-900/10 text-emerald-600 px-2 py-0.5 rounded-md text-xs">
               <span>↗</span>
-              <span className="tabular-nums">+{formatBonusNumber(extraAmount)}</span>
+              <span>+{formatBonusNumber(extraAmount)}</span>
             </div>
           </div>
         </motion.div>

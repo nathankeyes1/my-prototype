@@ -199,8 +199,8 @@ export function Calculator({ initialAmount }: { initialAmount?: number }) {
   const selectedPaymentMethod = PAYMENT_METHODS.existing.find(m => m.id === paymentMethod) ?? PAYMENT_METHODS.existing[0]
 
   return (
-    <Card className="p-6 space-y-4">
-      <div className="space-y-1">
+    <Card className="p-3 sm:p-6 space-y-4">
+      <div className="space-y-2 sm:space-y-4">
         {/* From Currency Card */}
         <div 
           className={cn(
@@ -289,14 +289,15 @@ export function Calculator({ initialAmount }: { initialAmount?: number }) {
         selected={toCurrency}
       />
 
-      {/* Recommended Amount Buttons */}
-      <div className="grid grid-cols-4 gap-2">
+      {/* Amount buttons */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
         {RECOMMENDED_AMOUNTS.map((recommendedAmount) => (
           <Button
             key={recommendedAmount}
             variant="outline"
             size="sm"
             onClick={() => setAmount(recommendedAmount)}
+            className="w-full text-sm sm:text-base"
           >
             ${recommendedAmount}
           </Button>
