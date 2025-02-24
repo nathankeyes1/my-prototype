@@ -132,7 +132,8 @@ export function PromoBoost() {
               <div className="pt-2">
                 <Button 
                   onClick={handleSend}
-                  className="w-full bg-[#2C3A4B] hover:bg-[#2C3A4B]/90 text-white py-6"
+                  className="w-full" 
+                  size="lg"
                 >
                   Send
                 </Button>
@@ -143,13 +144,24 @@ export function PromoBoost() {
 
         <motion.div 
           layout="position" 
-          className="space-y-1"
+          className="space-y-2"
           transition={{
             type: "spring",
             bounce: 0,
             duration: 0.2
           }}
         >
+          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            <span>Rate:</span>
+            <div className="flex items-center gap-1">
+              <span>1 USD = {fxRate.toFixed(2)} MXN</span>
+              <div className="flex items-center gap-0.5 text-xs">
+                <span className="text-emerald-600">↗</span>
+                <span className="text-emerald-600">+18.15%</span>
+              </div>
+            </div>
+          </div>
+
           <div className="text-sm text-muted-foreground line-through">
             Receive = {regularAmount.toFixed(2)} MXN
           </div>
@@ -157,8 +169,8 @@ export function PromoBoost() {
             <div className="text-xl font-semibold">
               Receive = {boostedAmount.toFixed(2)} MXN
             </div>
-            <div className="flex items-center gap-1 bg-emerald-100 text-emerald-700 px-2 py-1 rounded-md text-sm">
-              <span className="text-xs">↗</span>
+            <div className="flex items-center gap-1 bg-emerald-900/10 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400 px-2 py-0.5 rounded-md text-xs">
+              <span>↗</span>
               <span className="tabular-nums">+{formatBonusNumber(extraAmount)}</span>
             </div>
           </div>
