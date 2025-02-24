@@ -166,48 +166,50 @@ export function CurrencySelector({ isOpen, onClose, onSelect, selected }: Curren
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md max-h-[90vh] flex flex-col gap-0 p-0">
-        <DialogHeader className="p-6 pb-4">
+      <DialogContent className="flex flex-col max-h-screen sm:max-h-[85vh]">
+        <DialogHeader>
           <DialogTitle>Select Currency</DialogTitle>
         </DialogHeader>
-        <div className="px-6 pb-4 border-b">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search currencies..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="pl-9"
-            />
-          </div>
-        </div>
-        <div className="flex-1 overflow-y-auto">
-          <div className="grid gap-0.5 p-1">
-            {filteredCurrencies.map((currency) => (
-              <button
-                key={currency.code}
-                className={cn(
-                  "flex items-center gap-3 p-4 rounded-lg transition-colors w-full text-left",
-                  "hover:bg-muted active:bg-muted/70",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  selected.code === currency.code && "bg-accent"
-                )}
-                onClick={() => {
-                  onSelect(currency)
-                  onClose()
-                }}
-              >
-                <div className="flex items-center justify-center w-8 h-8 rounded-full shrink-0 bg-muted">
-                  {currency.flag}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-medium truncate">{currency.code}</div>
-                  <div className="text-sm text-muted-foreground truncate">
-                    {currency.name}
+        
+        <div className="flex-1 min-h-0 overflow-y-auto">
+          <div className="p-6">
+            <div className="relative mb-4">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search currencies..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-9"
+              />
+            </div>
+
+            <div className="grid gap-1">
+              {filteredCurrencies.map((currency) => (
+                <button
+                  key={currency.code}
+                  onClick={() => {
+                    onSelect(currency)
+                    onClose()
+                  }}
+                  className={cn(
+                    "flex items-center gap-3 p-3 w-full text-left rounded-md",
+                    "hover:bg-muted active:bg-muted/70 transition-colors",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    selected.code === currency.code && "bg-muted"
+                  )}
+                >
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted/60 shrink-0">
+                    {currency.flag}
                   </div>
-                </div>
-              </button>
-            ))}
+                  <div className="flex-1 min-w-0">
+                    <div className="font-medium truncate">{currency.code}</div>
+                    <div className="text-sm text-muted-foreground truncate">
+                      {currency.name}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </DialogContent>

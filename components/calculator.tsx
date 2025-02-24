@@ -354,40 +354,45 @@ export function Calculator({ initialAmount }: { initialAmount?: number }) {
           <DialogHeader>
             <DialogTitle>Select Delivery Method</DialogTitle>
           </DialogHeader>
-          <RadioGroup value={deliveryMethod} onValueChange={(value) => {
-            setDeliveryMethod(value)
-            setShowDeliverySelector(false)
-          }}>
-            <div className="grid gap-4">
-              {DELIVERY_METHODS.map((method) => (
-                <Label
-                  key={method.id}
-                  className="flex items-center gap-4 p-4 border rounded-lg cursor-pointer hover:bg-accent"
-                >
-                  <RadioGroupItem value={method.id} id={method.id} />
-                  <method.icon className="h-5 w-5" />
-                  <div className="flex-1">
-                    <div className="font-medium">{method.title}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {method.description}
-                    </div>
-                  </div>
-                  <div className="text-sm text-muted-foreground">{method.eta}</div>
-                </Label>
-              ))}
+          
+          <div className="flex-1 overflow-y-auto">
+            <div className="p-6">
+              <RadioGroup value={deliveryMethod} onValueChange={(value) => {
+                setDeliveryMethod(value)
+                setShowDeliverySelector(false)
+              }}>
+                <div className="grid gap-2">
+                  {DELIVERY_METHODS.map((method) => (
+                    <Label
+                      key={method.id}
+                      className="flex items-center gap-3 p-3 border rounded-md cursor-pointer hover:bg-muted"
+                    >
+                      <RadioGroupItem value={method.id} id={method.id} />
+                      <method.icon className="h-5 w-5" />
+                      <div className="flex-1">
+                        <div className="font-medium">{method.title}</div>
+                        <div className="text-sm text-muted-foreground">
+                          {method.description}
+                        </div>
+                      </div>
+                      <div className="text-sm text-muted-foreground">{method.eta}</div>
+                    </Label>
+                  ))}
+                </div>
+              </RadioGroup>
             </div>
-          </RadioGroup>
+          </div>
         </DialogContent>
       </Dialog>
 
       <Dialog open={showPaymentSelector} onOpenChange={setShowPaymentSelector}>
-        <DialogContent className="sm:max-w-md max-h-[90vh] flex flex-col gap-0 p-0 overflow-hidden">
-          <DialogHeader className="p-4">
+        <DialogContent>
+          <DialogHeader>
             <DialogTitle>How to add money</DialogTitle>
           </DialogHeader>
           
           <div className="flex-1 overflow-y-auto">
-            <div className="p-4">
+            <div className="p-6">
               <h3 className="text-sm font-medium mb-2">Accounts</h3>
               <div className="grid gap-1">
                 {PAYMENT_METHODS.existing.map((method) => (
